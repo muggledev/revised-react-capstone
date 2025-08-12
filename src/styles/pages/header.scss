@@ -1,0 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  width: 100%;
+  background-color: rgb(101, 250, 250);
+  height: 70px;
+  position: fixed;
+  top: 0;
+  z-index: 3;
+
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 2rem;
+    height: 100%;
+    // margin: 0 auto;
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      i {
+        color: #fd4b9b;
+        font-size: 1.5rem;
+      }
+
+      .brand-name {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #686868;
+      }
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 25px;
+      height: 18px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+
+      .bar {
+        height: 3px;
+        width: 100%;
+        background-color: #686868;
+        border-radius: 2px;
+      }
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+
+      .nav-label {
+        a {
+          text-decoration: none;
+          font-weight: 400;
+          font-size: 1rem;
+          padding: 10px 10px;
+          display: inline-block;
+          border-radius: 3px;
+          color: #686868;
+
+          &:hover {
+            color: rgb(255, 79, 158);
+            transition: 0.2s ease-in;
+          }
+        }
+
+        // .highlight {
+        //   color: #ee227e;
+
+        //   &:hover {
+        //     color: rgb(255, 79, 158);
+        //     transition: 0.2s ease-in;
+        //   }
+        // }
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+
+      .nav {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: rgb(101, 250, 250);
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem 0;
+        display: none;
+      }
+
+      .nav.open {
+        display: flex;
+      }
+    }
+  }
+}

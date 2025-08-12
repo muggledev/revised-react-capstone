@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: rgb(42, 42, 42);
+  color: lightgray;
+  padding: 40px 20px;
+  font-size: 17px;
+  width: 100%;
+}

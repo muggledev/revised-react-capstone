@@ -1,0 +1,55 @@
+.about-hero-image {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    background-color: rgb(231, 231, 231);
+  }
+}
+
+.capstone-process {
+  background-color: rgb(242, 228, 248);
+  h1 {
+    text-align: center;
+    font-size: 40px;
+    color: #555;
+    padding: 40px;
+  }
+  h2 {
+    text-align: center;
+    font-size: 27px;
+    color: #555;
+    padding-bottom: 40px;
+  }
+}
+
+.front-end-journey {
+  background-color: rgb(214, 252, 252);
+  h1 {
+    text-align: center;
+    font-size: 40px;
+    color: #555;
+    padding-top: 40px;
+  }
+  h2 {
+    text-align: center;
+    font-size: 27px;
+    color: #555;
+    padding-bottom: 40px;
+  }
+}
+
+.my-favorite-coding-language {
+  background-color: #fce4ef;
+  h1 {
+    text-align: center;
+    font-size: 40px;
+    color: #555;
+    padding: 40px;
+  }
+}
