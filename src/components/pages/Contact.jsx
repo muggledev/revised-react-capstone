@@ -1,18 +1,22 @@
 import React, { useState } from "react";
 import "../../styles/pages/contact.scss";
-import decoratingClass from "../../assets/cake-decorating-class.jpg";
+import contactImage from "../../assets/contact-us.jpg";
 
 function Contact() {
   const [formData, setFormData] = useState({
     firstname: "",
     lastname: "",
+    email: "",
     subject: "",
   });
 
   const [showPopup, setShowPopup] = useState(false);
 
   const isFormValid =
-    formData.firstname && formData.lastname && formData.subject;
+    formData.firstname &&
+    formData.lastname &&
+    formData.email &&
+    formData.subject;
 
   const handleChange = (e) => {
     setFormData({
@@ -41,7 +45,7 @@ function Contact() {
   return (
     <div className="main">
       <div className="contact-hero-image">
-        <img src={decoratingClass} alt="Cake Decorating Class" />
+        <img src={contactImage} alt="Laptop and Phone" />
       </div>
       <div className="get-in-touch">
         <h1>Get In Touch</h1>
@@ -59,31 +63,64 @@ function Contact() {
           <h1>Send Us a Message</h1>
           <form className="form" onSubmit={handleSubmit}>
             <div className="input-wrapper">
+              <label htmlFor="firstname">
+                First Name <span className="required">*</span>
+              </label>
               <input
                 type="text"
+                id="firstname"
                 name="firstname"
                 placeholder="Your first name..."
                 value={formData.firstname}
                 onChange={handleChange}
+                required
               />
             </div>
+
             <div className="input-wrapper">
+              <label htmlFor="lastname">
+                Last Name <span className="required">*</span>
+              </label>
               <input
                 type="text"
+                id="lastname"
                 name="lastname"
                 placeholder="Your last name..."
                 value={formData.lastname}
                 onChange={handleChange}
+                required
               />
             </div>
+
             <div className="input-wrapper">
+              <label htmlFor="email">
+                Email <span className="required">*</span>
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Your email..."
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            <div className="input-wrapper">
+              <label htmlFor="subject">
+                Message <span className="required">*</span>
+              </label>
               <textarea
+                id="subject"
                 name="subject"
                 placeholder="Write something..."
                 value={formData.subject}
                 onChange={handleChange}
+                required
               />
             </div>
+
             <input
               type="submit"
               value="Submit"
@@ -111,11 +148,11 @@ function Contact() {
               </div>
               <div className="email">
                 <i class="fa-solid fa-envelope"></i>
-                <p>info@sprinkleandwhisk.com</p>
+                <p>info@glamandgadget.com</p>
               </div>
               <div className="location">
                 <i class="fa-solid fa-location-dot"></i>
-                <p>248 Sugarberry Lane, Frostville, UT 90210</p>
+                <p>3125 Lumina Lane Suite 408 San Aurelia, CA 90211</p>
               </div>
               <div className="social-media">
                 <i class="fa-brands fa-amazon"></i>

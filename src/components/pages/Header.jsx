@@ -11,8 +11,9 @@ function Header() {
     <header>
       <div className="navbar">
         <div className="brand">
-          <i className="fa-solid fa-cake-candles"></i>
-          <span className="brand-name">Sprinkle & Whisk</span>
+          <i className="fa-regular fa-gem"></i>
+          <i class="fa-solid fa-mobile-retro"></i>
+          <span className="brand-name">Glam & Gadget</span>
         </div>
 
         <button className="hamburger" onClick={toggleMenu}>

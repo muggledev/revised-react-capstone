@@ -1,16 +1,38 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 import "../../styles/pages/home.scss";
-import cakeVideo from "../../assets/long-cake-decorating.mp4";
-import cupcake from "../../assets/cupcake.webp";
+import moodBoard from "../../assets/mood-board.png";
+import peopleOnDevices from "../../assets/diverse-people-using-digital-devices.avif";
 
 function Home() {
+  const [featuredProducts, setFeaturedProducts] = useState([]);
+  const history = useHistory();
+
+  useEffect(() => {
+    const fetchFeatured = async () => {
+      try {
+        const res = await fetch("https://fakestoreapi.com/products?limit=3");
+        const data = await res.json();
+        const transformed = data.map((item) => ({
+          id: item.id,
+          img: item.image,
+          productName: item.title,
+          price: parseFloat(item.price),
+        }));
+        setFeaturedProducts(transformed);
+      } catch (error) {
+        console.error("Failed to fetch featured products:", error);
+      }
+    };
+    fetchFeatured();
+  }, []);
+
   return (
     <div className="home">
       <div className="hero-section">
         <video
           className="hero-video"
-          src={cakeVideo}
+          src={peopleOnDevices}
           autoPlay
           loop
           muted
@@ -24,12 +46,12 @@ function Home() {
         </div>
       </div>
       <div className="about-us">
-        <h1>About Sprinkle & Whisk</h1>
+        <h1>About Glam & Gadget</h1>
       </div>
 
       <section className="about-section">
         <div className="about-image">
-          <img src={cupcake} alt="Cupcake" />
+          <img src={moodBoard} alt="People on Devices" />
         </div>
         <div className="about-content">
           <h2 className="about-us-title">
@@ -47,33 +69,21 @@ function Home() {
           </p>
         </div>
       </section>
-      <section className="client-comment-section">
-        <div className="client-comments-header">
-          <h1>What Our Clients Say</h1>
+      <section className="featured-section">
+        <div className="featured-header">
+          <h1>Featured Products</h1>
         </div>
-        <div className="client-comments">
-          <p>
-            "Game-changer for my home baking!" <br />
-            I've tried tools from big-name stores, but nothing compares to the
-            quality and charm of Sprinkle & Whisk. The piping tips are super
-            precise, and the packaging is adorable. Fast shipping, too! <br />{" "}
-            <br />— Jessica M., Toronto
-          </p>
-          <p>
-            "Everything I needed in one place." <br />
-            As a beginner, I was overwhelmed trying to find the right decorating
-            tools — until I found Sprinkle & Whisk. Their starter kit made it so
-            easy to get going, and the sprinkle blends are chef's kiss! <br />{" "}
-            <br />— Daniela R., Vancouver
-          </p>
-          <p>
-            "Beautiful tools, excellent service." <br />
-            Not only are the tools high-quality and easy to use, but the
-            customer service is top-notch. I had a question about an order, and
-            they responded within hours. Will definitely be ordering again!{" "}
-            <br />
-            <br />— Amrita K., Calgary
-          </p>
+        <div className="featured-products">
+          {featuredProducts.map((product) => (
+            <div key={product.id} className="featured-card">
+              <img src={product.img} alt={product.productName} />
+              <h3>{product.productName}</h3>
+              <p>${product.price.toFixed(2)}</p>
+              <button onClick={() => history.push(`/product/${product.id}`)}>
+                View Product
+              </button>
+            </div>
+          ))}
         </div>
       </section>
       <section className="shop-our-products">

@@ -1,26 +1,49 @@
 import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom";
 import "../../styles/pages/products.scss";
-import { useCart } from "./CartContext";
+import { useCart } from "./Cart";
 
 function Products({ products }) {
   const { addToCart } = useCart();
   const history = useHistory();
   const [sortField, setSortField] = useState("id");
-  const [sortOrder, setSortOrder] = useState("asc");
   const [quantities, setQuantities] = useState({});
+  const [sortOrder, setSortOrder] = useState("asc");
+  const [categories, setCategories] = useState([]);
+  const [selectedCategories, setSelectedCategories] = useState([]);
+
+  useEffect(() => {
+    fetch("https://fakestoreapi.com/products/categories")
+      .then((res) => res.json())
+      .then((data) => {
+        setCategories(data);
+        setSelectedCategories(data);
+      })
+      .catch((error) => {
+        console.error("Failed to fetch categories:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    const initialQuantities = {};
+    products.forEach((product) => {
+      initialQuantities[product.id] = 1;
+    });
+    setQuantities(initialQuantities);
+  }, [products]);
 
   const handleIncrease = (productId) => {
     setQuantities((prev) => ({
       ...prev,
-      [productId]: (prev[productId] || 0) + 1,
+      [productId]: Math.max((prev[productId] || 1) + 1),
     }));
   };
 
   const handleDecrease = (productId) => {
     setQuantities((prev) => ({
       ...prev,
-      [productId]: Math.max((prev[productId] || 0) - 1, 0),
+      [productId]: Math.max((prev[productId] || 1) - 1, 1),
     }));
   };
 
@@ -30,9 +53,13 @@ function Products({ products }) {
 
     if (quantity > 0 && product) {
       addToCart(product, quantity);
-      setQuantities((prev) => ({ ...prev, [productId]: 0 }));
+      toast.success("Added to cart", {
+        position: "top-right",
+        autoClose: 2000,
+      });
+      setQuantities((prev) => ({ ...prev, [productId]: 1 }));
     } else {
-      alert("Please select at least one item.");
+      toast.error("Please select at least one item.");
     }
   };
 
@@ -40,33 +67,62 @@ function Products({ products }) {
     <div className="products-page">
       <h1>Shop Our Cake Decorating Products</h1>
       <div className="sort-controls">
-        <label>
-          Sort by:&nbsp;
-          <select
-            value={sortField}
-            onChange={(e) => setSortField(e.target.value)}
-          >
-            <option value="id">ID</option>
-            <option value="productName">Title</option>
-            <option value="price">Price</option>
-            <option value="category">Category</option>
-          </select>
-        </label>
+        <div className="dropdown-row">
+          <label>
+            Sort by:&nbsp;
+            <select
+              value={sortField}
+              onChange={(e) => setSortField(e.target.value)}
+            >
+              <option value="id">ID</option>
+              <option value="productName">Title</option>
+              <option value="price">Price</option>
+              <option value="category">Category</option>
+            </select>
+          </label>
 
-        <label>
-          Order:&nbsp;
-          <select
-            value={sortOrder}
-            onChange={(e) => setSortOrder(e.target.value)}
-          >
-            <option value="asc">Ascending</option>
-            <option value="desc">Descending</option>
-          </select>
-        </label>
+          <label>
+            Order:&nbsp;
+            <select
+              value={sortOrder}
+              onChange={(e) => setSortOrder(e.target.value)}
+            >
+              <option value="asc">Ascending</option>
+              <option value="desc">Descending</option>
+            </select>
+          </label>
+        </div>
+
+        <div className="category-filters">
+          <h3>Filter by Category:</h3>
+          {categories.map((cat) => (
+            <label key={cat}>
+              <input
+                type="checkbox"
+                value={cat}
+                checked={selectedCategories.includes(cat)}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  setSelectedCategories((prev) =>
+                    prev.includes(value)
+                      ? prev.filter((c) => c !== value)
+                      : [...prev, value]
+                  );
+                }}
+              />
+              {cat}
+            </label>
+          ))}
+        </div>
       </div>
 
       <div className="product-list">
         {[...products]
+          .filter((product) => {
+            if (selectedCategories.length === 0) return false;
+            if (selectedCategories.length === categories.length) return true;
+            return selectedCategories.includes(product.category);
+          })
           .sort((a, b) => {
             let valA = a[sortField];
             let valB = b[sortField];
@@ -88,7 +144,7 @@ function Products({ products }) {
                 <div className="text-content">
                   <h2 className="product-name">{product.productName}</h2>
                   <p className="product-price">
-                    <strong>{product.price}</strong>
+                    <strong>${product.price.toFixed(2)}</strong>
                   </p>
                   {/* <p className="product-description">{product.description}</p> */}
                 </div>

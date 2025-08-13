@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import About from "./components/pages/About";
-import Cart from "./components/pages/CartContext";
 import Contact from "./components/pages/Contact";
 import Footer from "./components/pages/Footer";
 import Header from "./components/pages/Header";
@@ -9,10 +8,12 @@ import Home from "./components/pages/Home";
 import Product from "./components/pages/Product";
 import Products from "./components/pages/Products";
 import NotFound from "./components/pages/NotFound";
-import { CartProvider } from "./components/pages/CartContext";
+import { Cart, CartProvider } from "./components/pages/Cart";
 
 import "./styles/pages/app.scss";
 import "./styles/common/common.scss";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState } from "react";
 
 function App() {
@@ -29,7 +30,7 @@ function App() {
         id: item.id,
         img: item.image,
         productName: item.title,
-        price: `$${item.price}`,
+        price: parseFloat(item.price),
         description: item.description,
         category: item.category,
         rating: item.rating,
@@ -42,6 +43,7 @@ function App() {
 
   return (
     <CartProvider>
+      <ToastContainer position="top-right" autoClose={2000} />
       <Router>
         <div className="page-container">
           <Header />
