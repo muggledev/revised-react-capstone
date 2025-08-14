@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom";
-import "../../styles/pages/products.scss";
+// import "../../styles/pages/products.scss";
 import { useCart } from "./Cart";
 
 function Products({ products }) {
@@ -65,7 +65,7 @@ function Products({ products }) {
 
   return (
     <div className="products-page">
-      <h1>Shop Our Cake Decorating Products</h1>
+      <h1>Shop Our Products</h1>
       <div className="sort-controls">
         <div className="dropdown-row">
           <label>

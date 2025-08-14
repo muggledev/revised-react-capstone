@@ -1,16 +1,18 @@
+@use "../common/common" as *;
+
 .single-product-page {
-  padding: 4rem;
+  padding: $spacing-xl;
   display: flex;
   justify-content: center;
-  background-color: rgb(242, 228, 248);
+  background-color: $color-background-light;
 
   .product-detail-card {
     display: flex;
-    gap: 2rem;
+    gap: $spacing-md;
     max-width: 900px;
-    background: white;
-    padding: 2rem;
-    border-radius: 8px;
+    background: $color-white;
+    padding: $spacing-lg;
+    border-radius: $border-radius-large;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   }
 
@@ -24,37 +26,38 @@
     flex-direction: column;
 
     .product-name {
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
+      font-size: $font-size-large;
+      margin-bottom: $spacing-xs;
     }
 
     .product-price {
       font-weight: bold;
-      color: #fb2f8b;
-      margin-bottom: 1rem;
+      color: $color-red;
+      margin-bottom: $spacing-md;
     }
 
     .product-description {
-      color: #444;
-      margin-bottom: 2rem;
+      color: $color-dark-grey;
+      margin-bottom: $spacing-lg;
+      line-height: 1.5;
     }
 
     .quantity-controls {
       display: flex;
       align-items: center;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
+      gap: $spacing-md;
+      margin-bottom: $spacing-lg;
 
       .quantity-btn {
         background: none;
         border: none;
         font-size: 1.5rem;
-        color: #555;
+        color: $color-dark-grey;
         cursor: pointer;
         transition: color 0.2s ease;
 
         &:hover {
-          color: #000;
+          color: $color-black;
         }
       }
 
@@ -70,28 +73,23 @@
       padding: 0.75rem 1rem;
       width: fit-content;
       align-self: flex-start;
-      background-color: #67d681;
-      color: white;
+      background-color: $color-button-primary;
+      color: $color-white;
       border: none;
       font-weight: bold;
-      border-radius: 4px;
+      border-radius: $border-radius-small;
       cursor: pointer;
 
       &:hover {
-        background-color: #4bb864;
+        background-color: $color-button-primary-hover;
       }
-    }
-    .product-description {
-      color: #444;
-      margin-bottom: 2rem;
-      line-height: 1.5;
     }
 
     .toggle-description {
-      color: #fc62a8;
+      color: $color-red;
       cursor: pointer;
       font-weight: 500;
-      margin-left: 8px;
+      margin-left: $spacing-xs;
 
       &:hover {
         text-decoration: underline;

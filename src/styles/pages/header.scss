@@ -1,3 +1,5 @@
+@use "../common/common" as *;
+
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +8,7 @@
 
 header {
   width: 100%;
-  background-color: rgb(101, 250, 250);
+  background-color: $color-blue-light;
   height: 70px;
   position: fixed;
   top: 0;
@@ -19,22 +21,21 @@ header {
     width: 100%;
     padding: 0 2rem;
     height: 100%;
-    // margin: 0 auto;
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: $spacing-xs;
 
       i {
-        color: #fd4b9b;
+        color: $color-red;
         font-size: 1.5rem;
       }
 
       .brand-name {
         font-size: 1.8rem;
         font-weight: bold;
-        color: #686868;
+        color: $color-white;
       }
     }
 
@@ -52,40 +53,31 @@ header {
       .bar {
         height: 3px;
         width: 100%;
-        background-color: #686868;
-        border-radius: 2px;
+        background-color: $color-light-grey;
+        border-radius: $border-radius-small;
       }
     }
 
     nav {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: $spacing-sm;
 
       .nav-label {
         a {
           text-decoration: none;
           font-weight: 400;
           font-size: 1rem;
-          padding: 10px 10px;
+          padding: $spacing-xs $spacing-xs;
           display: inline-block;
-          border-radius: 3px;
-          color: #686868;
+          border-radius: $border-radius-small;
+          color: $color-white;
 
           &:hover {
-            color: rgb(255, 79, 158);
+            color: $color-red;
             transition: 0.2s ease-in;
           }
         }
-
-        // .highlight {
-        //   color: #ee227e;
-
-        //   &:hover {
-        //     color: rgb(255, 79, 158);
-        //     transition: 0.2s ease-in;
-        //   }
-        // }
       }
     }
 
@@ -99,11 +91,11 @@ header {
         top: 70px;
         left: 0;
         width: 100%;
-        background-color: rgb(101, 250, 250);
+        background-color: $color-blue-light;
         flex-direction: column;
         align-items: center;
-        gap: 1rem;
-        padding: 1rem 0;
+        gap: $spacing-sm;
+        padding: $spacing-sm 0;
         display: none;
       }
 

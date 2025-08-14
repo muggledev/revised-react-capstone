@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import "../../styles/pages/header.scss";
+// import "../../styles/pages/header.scss";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

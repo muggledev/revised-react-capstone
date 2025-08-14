@@ -1,3 +1,5 @@
+@use "../common/common" as *;
+
 .about-hero-image {
   width: 100%;
   height: 400px;
@@ -12,44 +14,83 @@
   }
 }
 
+.card {
+  background-color: $color-white;
+  padding: $spacing-lg;
+  border-radius: $border-radius-medium;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  margin: 0 auto;
+  max-width: 900px;
+}
+
 .capstone-process {
-  background-color: rgb(242, 228, 248);
-  h1 {
-    text-align: center;
-    font-size: 40px;
-    color: #555;
-    padding: 40px;
-  }
-  h2 {
-    text-align: center;
-    font-size: 27px;
-    color: #555;
-    padding-bottom: 40px;
+  background-color: $color-background-light;
+  padding: $spacing-xl 0;
+
+  .card {
+    h1 {
+      text-align: center;
+      font-size: 40px;
+      color: $color-dark-grey;
+      margin-bottom: $spacing-md;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 27px;
+      color: $color-dark-grey;
+      margin-bottom: $spacing-md;
+    }
+
+    p {
+      font-size: $font-size-medium;
+      color: $color-dark-grey;
+    }
   }
 }
 
 .front-end-journey {
-  background-color: rgb(214, 252, 252);
-  h1 {
-    text-align: center;
-    font-size: 40px;
-    color: #555;
-    padding-top: 40px;
-  }
-  h2 {
-    text-align: center;
-    font-size: 27px;
-    color: #555;
-    padding-bottom: 40px;
+  background-color: rgba(95, 142, 203, 0.4);
+  padding: $spacing-xl 0;
+
+  .card {
+    h1 {
+      text-align: center;
+      font-size: 40px;
+      color: $color-dark-grey;
+      margin-bottom: $spacing-md;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 27px;
+      color: $color-dark-grey;
+      margin-bottom: $spacing-md;
+    }
+
+    p {
+      font-size: $font-size-medium;
+      color: $color-dark-grey;
+    }
   }
 }
 
 .my-favorite-coding-language {
-  background-color: #fce4ef;
-  h1 {
-    text-align: center;
-    font-size: 40px;
-    color: #555;
-    padding: 40px;
+  background-color: rgba(217, 44, 44, 0.5);
+  padding: $spacing-xl 0;
+
+  .card {
+    h1 {
+      text-align: center;
+      font-size: 40px;
+      color: $color-dark-grey;
+      margin-bottom: $spacing-md;
+    }
+
+    p {
+      font-size: $font-size-medium;
+      color: $color-dark-grey;
+      text-align: left;
+    }
   }
 }

@@ -1,4 +1,7 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Cart, CartProvider } from "./components/pages/Cart";
+import { ToastContainer } from "react-toastify";
+import { useEffect, useState } from "react";
 
 import About from "./components/pages/About";
 import Contact from "./components/pages/Contact";
@@ -8,13 +11,10 @@ import Home from "./components/pages/Home";
 import Product from "./components/pages/Product";
 import Products from "./components/pages/Products";
 import NotFound from "./components/pages/NotFound";
-import { Cart, CartProvider } from "./components/pages/Cart";
 
-import "./styles/pages/app.scss";
+import "./styles/main.scss";
 import "./styles/common/common.scss";
-import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useEffect, useState } from "react";
 
 function App() {
   const [products, setProducts] = useState([]);

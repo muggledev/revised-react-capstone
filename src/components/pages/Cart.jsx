@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from "react";
 import { toast } from "react-toastify";
-import "../../styles/pages/cart.scss";
+// import "../../styles/pages/cart.scss";
 
 // ----------- CONTEXT SETUP ------------
 const CartContext = createContext();
@@ -122,60 +122,62 @@ export function Cart() {
   const total = subtotal + shipping;
 
   return (
-    <div className="cart-container">
-      <h1 className="cart-title">Your Cart</h1>
+    <div className="page-container">
+      <div className="cart-container">
+        <h1 className="cart-title">Your Cart</h1>
 
-      {cartItems.length === 0 ? (
-        <p className="cart-empty">Your cart is empty.</p>
-      ) : (
-        <div>
-          {cartItems.map((item) => (
-            <div className="cart-item" key={item.id}>
-              <img
-                className="item-image"
-                src={item.img}
-                alt={item.productName}
-              />
-              <div className="item-details">
-                <h3>{item.productName}</h3>
-                <p>Price: ${item.price.toFixed(2)}</p>
-                <p>Quantity: {item.quantity}</p>
+        {cartItems.length === 0 ? (
+          <p className="cart-empty">Your cart is empty.</p>
+        ) : (
+          <div>
+            {cartItems.map((item) => (
+              <div className="cart-item" key={item.id}>
+                <img
+                  className="item-image"
+                  src={item.img}
+                  alt={item.productName}
+                />
+                <div className="item-details">
+                  <h3>{item.productName}</h3>
+                  <p>Price: ${item.price.toFixed(2)}</p>
+                  <p>Quantity: {item.quantity}</p>
+                </div>
+                <div className="item-controls">
+                  <button onClick={() => handleDecrease(item)}>-</button>
+                  <button onClick={() => handleIncrease(item)}>+</button>
+                  <button onClick={() => openModal("remove", item)}>
+                    Remove
+                  </button>
+                </div>
               </div>
-              <div className="item-controls">
-                <button onClick={() => handleDecrease(item)}>-</button>
-                <button onClick={() => handleIncrease(item)}>+</button>
-                <button onClick={() => openModal("remove", item)}>
-                  Remove
-                </button>
-              </div>
+            ))}
+
+            <div className="price-summary">
+              <p>Subtotal: ${subtotal.toFixed(2)}</p>
+              <p>Shipping: ${shipping.toFixed(2)}</p>
+              <h3>Total: ${total.toFixed(2)}</h3>
+              <button
+                className="checkout-button"
+                onClick={() => openModal("checkout")}
+              >
+                Checkout
+              </button>
             </div>
-          ))}
-
-          <div className="price-summary">
-            <p>Subtotal: ${subtotal.toFixed(2)}</p>
-            <p>Shipping: ${shipping.toFixed(2)}</p>
-            <h3>Total: ${total.toFixed(2)}</h3>
-            <button
-              className="checkout-button"
-              onClick={() => openModal("checkout")}
-            >
-              Checkout
-            </button>
           </div>
-        </div>
-      )}
+        )}
 
-      <Modal
-        isOpen={modalData.isOpen}
-        title={modalData.type === "remove" ? "Remove Item" : "Checkout"}
-        message={
-          modalData.type === "remove"
-            ? `Are you sure you want to remove ${modalData.item?.productName}?`
-            : "Are you sure you want to checkout? This will clear your cart."
-        }
-        onConfirm={confirmModal}
-        onClose={closeModal}
-      />
+        <Modal
+          isOpen={modalData.isOpen}
+          title={modalData.type === "remove" ? "Remove Item" : "Checkout"}
+          message={
+            modalData.type === "remove"
+              ? `Are you sure you want to remove ${modalData.item?.productName}?`
+              : "Are you sure you want to checkout? This will clear your cart."
+          }
+          onConfirm={confirmModal}
+          onClose={closeModal}
+        />
+      </div>
     </div>
   );
 }

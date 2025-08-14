@@ -1,3 +1,5 @@
+@use "../common/common" as *;
+
 * {
   margin: 0;
   padding: 0;
@@ -6,43 +8,46 @@
 
 .home {
   position: relative;
-  background-color: rgb(242, 228, 248);
+  background-color: $color-background-light;
 
   .hero-section {
     position: relative;
 
-    .hero-video {
+    .hero-image {
       width: 100vw;
       height: 550px;
       object-fit: contain;
       display: block;
-      background-color: rgba(0, 0, 0, 0.2);
+      background-color: $color-black-transparent;
     }
 
     .slogan {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      @include flex-center-column;
       position: absolute;
       text-align: center;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      color: white;
-      font-size: 25px;
+      color: $color-white;
+      font-size: $font-size-xlarge;
       z-index: 1;
-      margin-bottom: 150px;
+      margin-bottom: $spacing-xxl;
+
+      h1 {
+        text-shadow: 2px 2px 8px $color-red-shadow;
+        max-width: 90%;
+        line-height: 1.2;
+      }
     }
   }
 }
 
 .about-us {
   text-align: center;
-  font-size: 22px;
-  color: #555;
-  margin-top: 100px;
+  font-size: $font-size-large;
+  color: $color-dark-grey;
+  margin-top: $spacing-xxl;
 
   h1 {
     position: relative;
@@ -56,8 +61,8 @@
       transform: translateX(-50%);
       width: 150px;
       height: 4px;
-      background-color: #fc62a8;
-      border-radius: 2px;
+      background-color: $color-red;
+      border-radius: $border-radius-small;
     }
   }
 }
@@ -67,66 +72,40 @@
   grid-template-columns: 1fr 2fr;
   gap: 80px;
   align-items: center;
-  padding: 60px 100px;
+  padding: $spacing-xl 100px;
   max-width: 1200px;
   margin: 0 auto;
 
   .about-image img {
     width: 100%;
     height: auto;
-    border-radius: 12px;
+    border-radius: $border-radius-xlarge;
   }
 
   .about-content {
     .about-us-title {
-      font-size: 26px;
-      color: #fc62a8;
-      margin-bottom: 20px;
+      font-size: $font-size-xlarge;
+      color: $color-red;
+      margin-bottom: $spacing-md;
     }
 
     .about-text {
-      font-size: 18px;
-      color: #5d5c5c;
+      font-size: $font-size-medium;
+      color: $color-light-grey;
       line-height: 1.6;
     }
   }
 }
 
-.client-comments-header {
-  background-color: #ffffff;
-  text-align: center;
-  font-size: 28px;
-  color: #555;
-  margin-top: 90px;
-  padding: 60px;
-
-  h1 {
-    position: relative;
-    display: inline-block;
-
-    &::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      bottom: -5px;
-      transform: translateX(-50%);
-      width: 150px;
-      height: 4px;
-      background-color: #fc62a8;
-      border-radius: 2px;
-    }
-  }
-}
-
 .featured-section {
-  background-color: #ffffff;
-  padding: 60px 100px;
+  background-color: $color-white;
+  padding: $spacing-xl 100px;
 
   .featured-header {
     text-align: center;
-    font-size: 28px;
-    color: #555;
-    margin-bottom: 40px;
+    font-size: $font-size-xxlarge;
+    color: $color-dark-grey;
+    margin-bottom: $spacing-lg;
 
     h1 {
       position: relative;
@@ -140,74 +119,73 @@
         transform: translateX(-50%);
         width: 150px;
         height: 4px;
-        background-color: #fc62a8;
-        border-radius: 2px;
+        background-color: $color-red;
+        border-radius: $border-radius-small;
       }
     }
   }
 
   .featured-products {
     display: flex;
-    gap: 40px;
+    gap: $spacing-lg;
     justify-content: center;
     flex-wrap: wrap;
   }
 
   .featured-card {
-    background-color: rgb(242, 228, 248);
+    background-color: $color-background-light;
     border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 20px;
+    border-radius: $border-radius-large;
+    padding: $spacing-md;
     width: 280px;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s ease;
+    @include box-shadow($color-black-shadow);
+    @include transition-transform;
 
     img {
       width: 100%;
       height: 200px;
       object-fit: contain;
-      margin-bottom: 15px;
+      margin-bottom: $spacing-sm;
     }
 
     h3 {
-      font-size: 18px;
-      margin-bottom: 10px;
+      font-size: $font-size-medium;
+      margin-bottom: $spacing-xs;
       color: #333;
     }
 
     p {
       font-size: 16px;
-      color: #666;
-      margin-bottom: 15px;
+      color: $color-grey-text;
+      margin-bottom: $spacing-sm;
     }
 
     button {
-      background-color: #fc62a8;
-      color: white;
+      background-color: $color-red;
+      color: $color-white;
       border: none;
-      padding: 10px 20px;
-      border-radius: 6px;
+      padding: $spacing-xs $spacing-md;
+      border-radius: $border-radius-medium;
       cursor: pointer;
-      font-size: 14px;
+      font-size: $font-size-small;
 
       &:hover {
-        background-color: #fb2e8a;
+        color: $color-button-hover-text;
       }
     }
   }
 }
 
 .shop-our-products {
-  background-color: rgb(163, 252, 252);
+  background-color: $color-blue-light;
   padding-top: 1px;
 
   .shop-our-products-header {
-    // background-color: rgb(101, 250, 250);
     text-align: center;
-    font-size: 22px;
-    color: #555;
-    margin-top: 100px;
+    font-size: $font-size-xxlarge;
+    color: $color-white;
+    margin-top: $spacing-xxl;
 
     h1 {
       position: relative;
@@ -221,26 +199,25 @@
         transform: translateX(-50%);
         width: 150px;
         height: 4px;
-        background-color: #fc62a8;
-        border-radius: 2px;
+        background-color: $color-red;
+        border-radius: $border-radius-small;
       }
     }
   }
 
   .shop-our-products-link {
-    // background-color: rgb(101, 250, 250);
     text-align: center;
     font-size: 26px;
-    color: #555;
+    color: $color-white;
     margin-top: 50px;
-    padding-bottom: 100px;
+    padding-bottom: $spacing-xxl;
 
     .shop-link {
-      color: #fc62a8;
+      color: $color-red;
       text-decoration: none;
 
       &:hover {
-        color: #fb2e8a;
+        color: $color-red-dark;
       }
     }
   }

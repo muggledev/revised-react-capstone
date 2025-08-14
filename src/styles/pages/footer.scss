@@ -1,3 +1,5 @@
+@use "../common/common" as *;
+
 * {
   margin: 0;
   padding: 0;
@@ -9,9 +11,9 @@ footer {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-color: rgb(42, 42, 42);
-  color: lightgray;
-  padding: 40px 20px;
-  font-size: 17px;
+  background-color: $color-footer-background;
+  color: $color-footer-text;
+  padding: $spacing-lg $spacing-md;
+  font-size: $font-size-medium;
   width: 100%;
 }

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../../styles/pages/contact.scss";
+// import "../../styles/pages/contact.scss";
 import contactImage from "../../assets/contact-us.jpg";
 
 function Contact() {
@@ -168,12 +168,12 @@ function Contact() {
               </div>
               <div className="service-description">
                 <p>
-                  Have questions about our cake decorating tools or need help
-                  with an order? We'd love to hear from you! Whether you're a
-                  beginner or a seasoned baker, our team is here to provide
-                  support, share tips, and ensure your baking experience is as
-                  sweet as possible. Fill out the "Send Us a Message" form, and
-                  we'll get back to you as soon as possible.
+                  Have questions about our fashion, jewelry, or tech products —
+                  or need help with an order? We'd love to hear from you!
+                  Whether you're refreshing your wardrobe, accessorizing your
+                  look, or upgrading your gear, our team is here to help. Fill
+                  out the “Send Us a Message” form, and we'll get back to you as
+                  soon as possible.
                 </p>
               </div>
             </div>

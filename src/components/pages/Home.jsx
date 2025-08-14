@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import "../../styles/pages/home.scss";
-import moodBoard from "../../assets/mood-board.png";
-import peopleOnDevices from "../../assets/diverse-people-using-digital-devices.avif";
+// import "../../styles/pages/home.scss";
+import moodBoard from "../../assets/second-mood-board.png";
+import modelingProducts from "../../assets/modeling-products.png";
 
 function Home() {
   const [featuredProducts, setFeaturedProducts] = useState([]);
@@ -30,19 +30,16 @@ function Home() {
   return (
     <div className="home">
       <div className="hero-section">
-        <video
-          className="hero-video"
-          src={peopleOnDevices}
+        <img
+          className="hero-image"
+          src={modelingProducts}
           autoPlay
           loop
           muted
           playsInline
         />
         <div className="slogan">
-          <h1>
-            Whisk a little, shop a lot — <br />
-            Sprinkle on the magic you've got!
-          </h1>
+          <h1>Wear It. Pair It. Power It.</h1>
         </div>
       </div>
       <div className="about-us">
@@ -55,17 +52,16 @@ function Home() {
         </div>
         <div className="about-content">
           <h2 className="about-us-title">
-            Whisking Up Creativity, One Sprinkle at a Time
+            Where Style Meets Innovation — Glam Up, Gear Up
           </h2>
           <p className="about-text">
-            At Sprinkle & Whisk, we believe that every cake tells a story — and
-            the right tools bring that story to life. Whether you're a seasoned
-            baker or just discovering the joy of decorating, we're here to equip
-            you with high-quality, thoughtfully curated tools that inspire
-            creativity and confidence in the kitchen. From precision piping tips
-            to vibrant sprinkles, our products are designed to make every bake a
-            masterpiece. We're passionate about helping you turn simple
-            ingredients into sweet works of art.
+            At Glam & Gadget, we blend fashion and function to bring you the
+            best of both worlds. From trendy women's and men's clothing to
+            stunning jewelry and cutting-edge tech accessories, our curated
+            collections are designed to elevate your lifestyle. Whether you're
+            dressing to impress or upgrading your everyday essentials, Glam &
+            Gadget is your one-stop destination for style, sparkle, and smart
+            living.
           </p>
         </div>
       </section>
@@ -88,18 +84,16 @@ function Home() {
       </section>
       <section className="shop-our-products">
         <div className="shop-our-products-header">
-          <h1>Ready To Whisk Up Something Beautiful?</h1>
+          <h1>From Outfits to Gadgets — We've Got Your Vibe</h1>
         </div>
         <div className="shop-our-products-link">
-          <p>
-            <p>
-              Click{" "}
-              <Link to="/products" className="shop-link">
-                HERE
-              </Link>{" "}
-              to shop our products.
-            </p>
-          </p>
+          <span>
+            Click{" "}
+            <Link to="/products" className="shop-link">
+              HERE
+            </Link>{" "}
+            to shop our products.
+          </span>
         </div>
       </section>
     </div>

@@ -1,5 +1,92 @@
-html,
-body {
-  margin: 0;
-  padding: 0;
+// Colors
+$color-white: #ffffff;
+$color-black: #000000;
+$color-black-transparent: rgba(0, 0, 0, 0.2);
+$color-red: #d92c2c;
+$color-red-shadow: rgba(255, 0, 0, 1);
+$color-red-dark: #8e0000;
+$color-background-light: rgb(253, 242, 232);
+$color-blue-light: rgb(119, 164, 223);
+$color-dark-grey: #555555;
+$color-light-grey: #5d5c5c;
+$color-grey-text: #666666;
+$color-button-hover-text: #320000;
+$color-black-shadow: rgba(0, 0, 0, 0.05);
+$color-button-primary: #007bff;
+$color-button-primary-hover: #0056b3;
+$color-button-danger: #dc3545;
+$color-button-secondary: #6c757d;
+$color-light-grey: #686868;
+$color-footer-background: #2a2a2a;
+$color-footer-text: lightgray;
+
+$color-light-background: #f8f8f8;
+$color-border: #ccc;
+$color-accent-blue: #52a4fb;
+$color-accent-blue-hover: #4081c7;
+$color-accent-green: #67d681;
+$color-accent-green-hover: #4bb864;
+
+// Font Sizes
+$font-size-small: 14px;
+$font-size-medium: 18px;
+$font-size-large: 22px;
+$font-size-xlarge: 26px;
+$font-size-xxlarge: 28px;
+$font-size-hero-title: 45px;
+
+// Spacing
+$spacing-xs: 10px;
+$spacing-sm: 15px;
+$spacing-md: 20px;
+$spacing-lg: 40px;
+$spacing-xl: 60px;
+$spacing-xxl: 100px;
+
+// Border Radius
+$border-radius-small: 2px;
+$border-radius-medium: 6px;
+$border-radius-large: 10px;
+$border-radius-xlarge: 12px;
+
+// Breakpoints
+$breakpoint-xs: 480px;
+$breakpoint-sm: 768px;
+$breakpoint-md: 992px;
+$breakpoint-lg: 1200px;
+
+// Mixins
+@mixin flex-center-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin box-shadow($shadow-color) {
+  box-shadow: 0 4px 10px $shadow-color;
+}
+
+@mixin transition-transform {
+  transition: transform 0.2s ease;
+}
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == xs {
+    @media (max-width: $breakpoint-xs) {
+      @content;
+    }
+  } @else if $breakpoint == sm {
+    @media (max-width: $breakpoint-sm) {
+      @content;
+    }
+  } @else if $breakpoint == md {
+    @media (max-width: $breakpoint-md) {
+      @content;
+    }
+  } @else if $breakpoint == lg {
+    @media (max-width: $breakpoint-lg) {
+      @content;
+    }
+  }
 }
