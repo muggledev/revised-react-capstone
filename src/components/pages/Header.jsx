@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-// import "../../styles/pages/header.scss";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,7 +11,7 @@ function Header() {
       <div className="navbar">
         <div className="brand">
           <i className="fa-regular fa-gem"></i>
-          <i class="fa-solid fa-mobile-retro"></i>
+          <i className="fa-solid fa-mobile-retro"></i>
           <span className="brand-name">Glam & Gadget</span>
         </div>
 

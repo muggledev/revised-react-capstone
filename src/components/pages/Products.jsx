@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom";
-// import "../../styles/pages/products.scss";
-import { useCart } from "./Cart";
+import { useCart } from "../../CartContext";
 
 function Products({ products }) {
-  const { addToCart } = useCart();
-  const history = useHistory();
   const [sortField, setSortField] = useState("id");
   const [quantities, setQuantities] = useState({});
   const [sortOrder, setSortOrder] = useState("asc");
   const [categories, setCategories] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState([]);
+
+  const { addToCart } = useCart();
+  const history = useHistory();
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products/categories")

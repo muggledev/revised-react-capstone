@@ -1,5 +1,3 @@
-import React from "react";
-// import "../../styles/pages/about.scss";
 import capstoneImage from "../../assets/capstone-2.webp";
 
 function About() {

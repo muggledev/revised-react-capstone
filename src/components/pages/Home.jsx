@@ -1,31 +1,9 @@
-import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-// import "../../styles/pages/home.scss";
 import moodBoard from "../../assets/second-mood-board.png";
 import modelingProducts from "../../assets/modeling-products.png";
 
-function Home() {
-  const [featuredProducts, setFeaturedProducts] = useState([]);
+function Home({ featuredProducts }) {
   const history = useHistory();
-
-  useEffect(() => {
-    const fetchFeatured = async () => {
-      try {
-        const res = await fetch("https://fakestoreapi.com/products?limit=3");
-        const data = await res.json();
-        const transformed = data.map((item) => ({
-          id: item.id,
-          img: item.image,
-          productName: item.title,
-          price: parseFloat(item.price),
-        }));
-        setFeaturedProducts(transformed);
-      } catch (error) {
-        console.error("Failed to fetch featured products:", error);
-      }
-    };
-    fetchFeatured();
-  }, []);
 
   return (
     <div className="home">

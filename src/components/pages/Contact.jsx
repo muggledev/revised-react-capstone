@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-// import "../../styles/pages/contact.scss";
+import { useState } from "react";
 import contactImage from "../../assets/contact-us.jpg";
 
 function Contact() {
@@ -32,6 +31,7 @@ function Contact() {
     setFormData({
       firstname: "",
       lastname: "",
+      email: "",
       subject: "",
     });
 
@@ -143,21 +143,21 @@ function Contact() {
                 <h1>Contact Information</h1>
               </div>
               <div className="phone-number">
-                <i class="fa-solid fa-square-phone"></i>
+                <i className="fa-solid fa-square-phone"></i>
                 <p>(555) 382-9425</p>
               </div>
               <div className="email">
-                <i class="fa-solid fa-envelope"></i>
+                <i className="fa-solid fa-envelope"></i>
                 <p>info@glamandgadget.com</p>
               </div>
               <div className="location">
-                <i class="fa-solid fa-location-dot"></i>
+                <i className="fa-solid fa-location-dot"></i>
                 <p>3125 Lumina Lane Suite 408 San Aurelia, CA 90211</p>
               </div>
               <div className="social-media">
-                <i class="fa-brands fa-amazon"></i>
-                <i class="fa-brands fa-instagram"></i>
-                <i class="fa-brands fa-facebook"></i>
+                <i className="fa-brands fa-amazon"></i>
+                <i className="fa-brands fa-instagram"></i>
+                <i className="fa-brands fa-facebook"></i>
               </div>
               <div className="business-hours">
                 <h2>Business Hours</h2>

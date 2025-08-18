@@ -1,23 +1,25 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-// import "../../styles/pages/product.scss";
-import { useCart } from "./Cart";
+import { useCart } from "../../CartContext";
 
 function Product({ products }) {
-  const { addToCart } = useCart();
-  const { id } = useParams();
-  const product = products.find((p) => p.id === parseInt(id));
   const [quantity, setQuantity] = useState(1);
   const [showFullDescription, setShowFullDescription] = useState(false);
+
+  const { id } = useParams();
+  const { addToCart } = useCart();
+
+  const product = products.find((p) => p.id === parseInt(id));
+
+  if (!product) {
+    return <div>Product not found.</div>;
+  }
 
   const toggleDescription = () => {
     setShowFullDescription((prev) => !prev);
   };
 
-  if (!product) {
-    return <div>Product not found.</div>;
-  }
   const truncatedDescription =
     product.description.length > 150
       ? product.description.slice(0, 150) + "..."
