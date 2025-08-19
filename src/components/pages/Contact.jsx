@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import contactImage from "../../assets/contact-us.jpg";
 
 function Contact() {
@@ -143,21 +144,21 @@ function Contact() {
                 <h1>Contact Information</h1>
               </div>
               <div className="phone-number">
-                <i className="fa-solid fa-square-phone"></i>
+                <FontAwesomeIcon icon="fa-square-phone" />
                 <p>(555) 382-9425</p>
               </div>
               <div className="email">
-                <i className="fa-solid fa-envelope"></i>
+                <FontAwesomeIcon icon="fa-envelope" />
                 <p>info@glamandgadget.com</p>
               </div>
               <div className="location">
-                <i className="fa-solid fa-location-dot"></i>
+                <FontAwesomeIcon icon="fa-location-dot" />
                 <p>3125 Lumina Lane Suite 408 San Aurelia, CA 90211</p>
               </div>
               <div className="social-media">
-                <i className="fa-brands fa-amazon"></i>
-                <i className="fa-brands fa-instagram"></i>
-                <i className="fa-brands fa-facebook"></i>
+                <FontAwesomeIcon icon="fa-brands fa-amazon" />
+                <FontAwesomeIcon icon="fa-brands fa-instagram" />
+                <FontAwesomeIcon icon="fa-brands fa-facebook" />
               </div>
               <div className="business-hours">
                 <h2>Business Hours</h2>

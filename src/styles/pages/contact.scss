@@ -145,7 +145,7 @@
           align-items: center;
           gap: $spacing-xs;
 
-          i {
+          svg {
             font-size: 20px;
             color: $color-red;
           }
@@ -161,7 +161,7 @@
           display: flex;
           gap: $spacing-sm;
 
-          i {
+          svg {
             font-size: 25px;
             color: $color-dark-grey;
             cursor: pointer;
@@ -303,7 +303,7 @@
         .phone-number,
         .email,
         .location {
-          i {
+          svg {
             font-size: 18px;
           }
           p {

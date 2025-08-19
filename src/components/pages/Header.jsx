@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 
 function Header() {
@@ -10,8 +11,8 @@ function Header() {
     <header>
       <div className="navbar">
         <div className="brand">
-          <i className="fa-regular fa-gem"></i>
-          <i className="fa-solid fa-mobile-retro"></i>
+          <FontAwesomeIcon icon="fa-regular fa-gem" />
+          <FontAwesomeIcon icon="fa-mobile-retro" />
           <span className="brand-name">Glam & Gadget</span>
         </div>
 
